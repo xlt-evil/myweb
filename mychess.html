@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>五子棋</title>
+	<!-- 引入bootstrap -->
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- 取消响应式 -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<style type="text/css">
+		canvas{
+			margin: 50px auto;
+			background-image: url(1.jpg);
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<!-- 背景音乐自动循环播放 -->
+	<audio src="1.mp3" autoplay="autoplay" loop="loop"></audio>
+	<!-- canvas 有两个大小画纸和画板，设置style 时就只表示设置画板的所以要使用width属性等 -->
+	<canvas id="myCanvas" style="" width="450px;" height="450px;"></canvas>
+	<button type="button" class="btn btn-primary btn-sm col-xs-4 col-xs-push-4" data-toggle="modal" data-target="#myModal" >
+  		选择模式
+	</button>
+	<!-- 模式选择弹出框 -->
+	<div>
+		<div class="modal fade " tabindex="-1" role="dialog" id="myModal">
+		    <div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		        	<div class="modal-header" style="display: hidden;">
+		        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		        			<span aria-hidden="true">&times;</span>
+		        		</button>
+		        		<h4 class="modal-title text-center">欢迎来到五子棋世界！</h4>
+		      		</div>
+		      		<div class="modal-body">
+			        	<button id="pvp" class="btn btn-default btns" value=1>双人模式</button>
+			            <button id="pvh" class="btn btn-default pull-right btns" value=2>人机模式</button>
+		      		</div>
+		     	</div>
+		    </div>
+		</div>
+	</div>
+</body>
+<!-- 引入jquery -->
+<script src="jquery.js"></script>
+<!-- 引入bootsrap的js -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<!-- 引入五子棋相关js -->
+<script src="chess.js"></script>
+</html>
