@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		canvas {
+			background-color: rgba(0,0,0,1);
+			margin: 100px auto;
+			display: block;
+		}
+		body{
+			overflow: hidden;
+		}
+		#time{
+			position: absolute;
+			top: 110px;
+			color: yellow;
+			right: 550px;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<div id="time">按方向键开始</div>
+	<script type="text/javascript">
+
+		var canvas = document.getElementById("canvas")
+		canvas.width = 1000
+		canvas.height = 800
+		var ctx = canvas.getContext("2d")
+		var snake = []
+		var ps  = new point(20,20)
+		snake[0] = new point(20,20)
+		var type = 0
+		var fp = []
+		var count = 0
+		var flages = false
+		fp[count] = new point(-100,-100)
+
+		function init(){
+			ctx.fillStyle = "white"
+			ctx.fillRect(20,20,snake[0].i,snake[0].j)
+			ctx.fill()
+		}
+
+		var up = new point(0,-20)
+		var down = new point(0,20)
+		var left = new point(-20,0)
+		var right = new point(20,0)
+		var dt = new point(0,0)
+		init()
+		function direction(event){
+			if (event.keyCode == 38){
+				console.log("向上")
+				type = 1 
+				dt = up
+			}
+			if (event.keyCode == 39){
+				console.log("向右")
+				type = 2
+				dt = right
+			}
+			if (event.keyCode == 40){
+				type = 3
+				dt = down
+				console.log("向下")
+			}
+			if (event.keyCode == 37){
+				type = 4
+				dt = left
+				console.log("向左")
+			}
+			if (event.keyCode == 32){
+				dt = new point(0,0)
+			}
+			flages = true
+		}
+
+		function draw(p){
+			ps.i = snake[0].i
+			var i = snake[0].i+p.i 
+			snake[0].i = i
+			ps.j = snake[0].j
+			var j = snake[0].j+p.j
+			snake[0].j = j
+		}
+
+		// food()
+		function s (){
+			if (!isout(type)){
+				draw(dt)
+			}
+		}
+
+		function drawsnake(){
+			if (isout2()){
+				clearInterval(stop)
+				clearInterval(stop1)
+				clearInterval(stop2)
+				document.getElementById("time").innerHTML = "挑战失败~"
+				return
+			}
+			s()
+			ctx.fillStyle = "black"
+			ctx.fillRect(ps.i,ps.j,20,20)
+			ctx.fill()
+			ctx.fillStyle = "white"
+			ctx.fillRect(snake[0].i,snake[0].j,20,20)
+			ctx.fill()
+		}
+		var stop = setInterval(drawsnake,50)
+		function point (i,j){
+			this.i = i 
+			this.j = j
+		}
+		function isout(i){
+			if (i == 1){ //向上
+				if (snake[0].j == 0) {
+					return true
+				}
+			}
+			if (i == 2){//向右
+				if (snake[0].i ==  980) {
+					return true
+				}
+			}
+			if (i == 3){//向下
+				if (snake[0].j == 780) {
+					return true
+				}
+			}	
+			if (i == 4){//向左
+				if (snake[0].i == 0) {
+					return true
+				}
+			}	
+			return false
+		}
+		function food(){
+			if (flages){
+				i = Math.floor(Math.random()*1000)
+				j = Math.floor(Math.random()*800)
+				var f1 = new point(i,j)
+				fp[count++] = f1
+				ctx.beginPath()
+				ctx.arc(f1.i,f1.j,10,0,2*Math.PI);
+				ctx.stroke()
+			}
+		}
+
+		function isout2(){
+			var flag = false
+			var snakepoint = new point(Math.floor(snake[0].i+20/2),Math.floor(snake[0].j+20/2) )
+			for (var x = 0;x<fp.length;x++){
+				var foodpoint = new point(Math.floor(fp[x].i+20/2),Math.floor(fp[x].j+20/2) )
+				var dis = Math.sqrt(Math.pow((snakepoint.i - foodpoint.i), 2)+Math.pow((snakepoint.j - foodpoint.j),2))
+				if (dis+dis < 30) {
+					console.log(dis)
+					console.log(foodpoint)
+					console.log(snakepoint)
+					flag = true 
+					break
+				}
+			}
+			return flag
+		}
+
+		var stop1 = setInterval(food,50)
+		document.onkeydown = direction
+		var time = document.getElementById("time")
+		var counts = 1
+		var stop2 = setInterval(function(){
+			if (flages){
+				time.innerHTML = counts++
+				if (counts == 16){
+					clearInterval(stop)
+					clearInterval(stop1)
+					clearInterval(stop2)
+					time.innerHTML = "成功活过18秒~"
+				}
+			}
+		},1000)
+	</script>
+</body>
+</html>
