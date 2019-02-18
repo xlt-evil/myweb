@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+</head>
+<body>
+
+	<div class="container">
+		<p id="msg" class="lead center-block"></p>
+	</div>
+	<div class="container">
+		<audio src="lovestory.mp3" controls="autoplay" class="col-sm-4" style="margin-top: 100px">
+			您的浏览器不支持 audio 标签。
+		</audio>
+	</div>
+		<pre>
+We were both young when I first saw you（第一次见到你的时候我们都很年轻）
+
+I close my eyes and the flashback starts（我闭上眼晴那一幕又闪现了）
+
+I'm standing there on a balcony in summer air（我站在阳台上感受着夏天的气味）
+
+See the lights, see the party, the ball gowns（看这灯光，看着舞会和那些礼服）
+
+See you make your way through the crowd（我看见你穿过拥挤的人群）
+
+And say hello（向我打招呼问好）
+
+little did I know，That you were Romeo（我只知道你叫罗密欧）
+
+You were throwing pebbles（你扔石子）
+
+And my daddy said stay away from Juliet（我爸爸说：“离朱丽叶远点”）
+
+And I was crying on the staircase（我在蹲在楼梯里不停地哭泣）
+
+Begging you please don't go（心里乞求着你不要离开）
+
+And I said（我说）
+
+Romeo, take me somewhere we can be alone（罗密欧，带着我去一个我们可以在一起没有人干扰的地方）
+
+I'll be waiting, all there's left to do is run（等待着这一天，现在唯一能做的就是逃离）
+
+You'll be the prince and I'll be the princess（你就会成为王子，而我也将会是公主）
+
+It's a love story, baby, just say yes（这是一个爱情故事，亲爱的，你只需答应我）
+
+So I sneak out to the garden to see you（是，我偷偷地到公园去见你）
+
+We keep quiet 'cause we're dead if they knew（我们保持低调因为被他们知道的话我们就死定了）
+
+So close your eyes,（所以请闭上你的眼睛）
+
+escape this town for a little while（从这个城逃出去哪怕只有短暂的时间）
+
+Oh ohCause you were Romeo, I was the scarlet letter（因为你是罗密欧，我就像红字里的女主角，和你有世仇不能在一起）
+
+And my daddy said stay away from Juliet（我爸爸说：“离朱丽叶远点”）
+
+But you were everything to me（但是你对于我来说是我的全部）
+
+I was begging you please don't go（我在心里乞求你，不要离开）
+
+And I said（然后我说）
+
+Romeo, take me somewhere we can be alone（罗密欧，到这我去一个我们可以在一起没有人干扰的地方）
+
+I'll be waiting, all there's left to do is run（我将会等待这一天，现在唯一能做的就是逃离）
+
+You'll be the prince and I'll be the princess（到那时我们就在童话世界，你将是王子，我将是公主）
+
+It's a love story, baby, just say yes（这是个爱情故事。亲爱的，只需要答应我）
+
+Romeo, save me,（罗密欧，救救我）
+
+they're trying to tell me how to feel（他们尝试告诉我怎样去感受）
+
+This love is difficult, but it's real（虽然这样的爱很困难，但它是真实的）
+
+Don't be afraid, we'll make it out of this mess（别害怕，我们会度过这一关的）
+
+It's a love story, baby, just say yes（这是个爱情故事，亲爱的，只需答应我）
+
+I got tired of waiting,（我厌烦了等待）
+
+wondering if you were ever coming around（想知道你是否曾来过）
+
+My faith in you was fading（我坚定我们会在一起的信念渐渐在褪去）
+
+When I met you on the outskirts of town（当我在城郊区里的再次看见你）
+
+And I said（然后我说）
+
+Romeo save me, I've been feeling so alone（罗密欧，救救我，我已经不想再感受孤独的痛苦了）
+
+I keep waiting for you but you never come（我一直在等这你，可是你从来也没来）
+
+Is this in my head, I don't know what to think（这只是我一厢情愿吗，我不知道该如何去思考）
+
+He knelt to the ground and he pulled out a ring（梦中的他他跪在地上然后递给我一个戒指）
+
+And said（他说，）
+
+Marry me, Juliet, you'll never have to be alone（嫁给我吧，朱丽叶，你将永远也不会感到孤单）
+
+I love you and that's all I really know（我所知道的就是我爱你）
+
+I talked to your dad,（我和你父亲交谈过）
+
+you'll pick out a white dress（去买了白色的婚纱吧）
+
+It's a love story, baby, just say yes（这是爱情，亲爱的，你只需要答应我）
+
+We were both young when I first saw you（因为我第一次见到你的时候，我们都很年轻）
+	</pre>
+</body>
+<script type="text/javascript">
+	 var typeWriter = {
+    msg: function(msg){
+     return msg;
+    },
+    len: function(){
+     return this.msg.length;
+    },
+    seq: 0,
+    speed: 150,//打字时间(ms)
+    type: function(){
+     var _this = this;
+     document.getElementById("msg").innerHTML = _this.msg.substring(0, _this.seq);
+     if (_this.seq == _this.len()) {
+      _this.seq = 0;
+       clearTimeout(t);
+     }
+     else {
+      _this.seq++;
+      var t = setTimeout(function(){_this.type()}, this.speed);
+     }
+    }
+   }
+   window.onload = function(){
+  
+    var msg = `我找到了呢，琴叔接下来开始你的表演٩(๑>◡<๑)۶ `;
+    function getMsg(){
+     return msg;
+    }
+    typeWriter.msg = getMsg(msg);
+    typeWriter.type();
+   }
+</script>
+</html>
